@@ -2,7 +2,7 @@ import requests
 import os
 
 # M3U faylının URL-i
-url = "http://php-yayin-paylasim.ct.ws/DTH-Justin-V1.php"
+url = "http://65.21.85.175:8000/playlist.m3u8?token=livetv"
 
 # Faylın yadda saxlanacağı qovluq
 output_folder = "kanallar"
