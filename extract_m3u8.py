@@ -2,7 +2,7 @@ import requests
 import os
 
 # M3U faylının URL-i
-url = "http://fastopen.live:8080/xmltv.php?username=PxiqR1VBIH&password=Kk8gxNY7Bh"
+url = "https://mehmetaslan.serv00.net/play.php?v=https://shouurvki7jtfax.ngolpdkyoctjcddxshli469r.org/sunshine/2Rempjobcn4_cm45eOz1ald9RppQZGfkz6QAceLgsVxaucpQeIQp24ZTotAwGL-t3EqwR2MOEX_q0wBCQ72PFkU1up0Kb86V2T3LBete7VQM4KeBvWqwTm0BUMA3eVfOc8dRsH2m0y8Tlleg-MgyqQpgSYnkevUNAruYJ4vKHOak4vPusuF6vBEdLYH9xy9LT-t7is5XD-Xvw1R7AoQICdg0sFPsRJ45dX6S7CXrBag/hls/index.m3u8"
 
 # Faylın yadda saxlanacağı qovluq
 output_folder = "kanallar"
