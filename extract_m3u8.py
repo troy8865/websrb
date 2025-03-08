@@ -2,7 +2,7 @@ import requests
 import os
 
 # M3U faylının URL-i
-url = "http://185.50.148.2:88/stalker_portal/server/tools/m3u.php"
+url = "http://php-yayin-paylasim.ct.ws/DTH-Justin-V1.php"
 
 # Faylın yadda saxlanacağı qovluq
 output_folder = "kanallar"
