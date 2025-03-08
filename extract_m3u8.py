@@ -2,7 +2,7 @@ import requests
 import os
 
 # M3U faylının URL-i
-url = "http://65.21.85.175:8000/playlist.m3u8?token=livetv"
+url = "http://fastopen.live:8080/xmltv.php?username=PxiqR1VBIH&password=Kk8gxNY7Bh"
 
 # Faylın yadda saxlanacağı qovluq
 output_folder = "kanallar"
