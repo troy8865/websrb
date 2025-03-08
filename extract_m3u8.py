@@ -33,7 +33,7 @@ for line in channel_lines:
         channel_info["url"] = line.strip()
         
         # Fayl adını təyin et
-        file_name = f"{channel_info['name']}.m3u8"
+        file_name = f"{channel_info['name']}.m3u"
         file_path = os.path.join(output_folder, file_name)
         
         # Fayl yarad və yaz
