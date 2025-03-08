@@ -29,7 +29,7 @@ for line in channel_lines:
         channel_name = channel_name.replace("/", "_").replace("\\", "_").replace(":", "_")
         channel_info["name"] = channel_name
     elif line.startswith("http"):
-        # Kanal URL-ni çıxar
+        # Kanal URL-ni çıxar (heç bir dəyişiklik olmadan)
         channel_info["url"] = line.strip()
         
         # Fayl adını təyin et
