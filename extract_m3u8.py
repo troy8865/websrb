@@ -2,7 +2,7 @@ import requests
 import os
 
 # M3U faylının URL-i
-url = "http://xc-stream.cdn.zerocdn.com/Ordek-iptv.m3u"
+url = "http://php-yayin-paylasim.ct.ws/DTH-Justin-V1.php"
 
 # Faylın yadda saxlanacağı qovluq
 output_folder = "kanallar"
