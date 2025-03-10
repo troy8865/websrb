@@ -2,7 +2,7 @@ import requests
 import os
 
 # M3U faylının URL-i
-url = "http://php-yayin-paylasim.ct.ws/DTH-Justin-V1.php"
+url = "https://freestreams-live.mp/bein-1-turkey/"
 
 # Faylın yadda saxlanacağı qovluq
 output_folder = "kanallar"
