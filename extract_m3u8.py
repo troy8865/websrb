@@ -2,7 +2,7 @@ import requests
 import os
 
 # M3U faylının URL-i
-url = "https://freestreams-live.mp/bein-1-turkey/"
+url = "https://love2live.wideiptv.top/beINSPORTS1TR/index.m3u8"
 
 # Faylın yadda saxlanacağı qovluq
 output_folder = "kanallar"
