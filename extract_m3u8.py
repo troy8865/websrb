@@ -1,54 +1,37 @@
-import requests
 import os
+import requests
+from bs4 import BeautifulSoup
 
-# M3U faylının URL-i
-url = "https://love2live.wideiptv.top/beINSPORTS1TR/index.m3u8"
+# Hedef site URL'si
+url = "https://www.selcuksportshd1715.xyz/"
 
-# Faylın yadda saxlanacağı qovluq
-output_folder = "kanallar"
+# Klasör ve dosya adı
+output_folder = "yayin_linkleri"
+output_file = os.path.join(output_folder, "yayin_listesi.m3u8")
+
+# Klasörü oluştur
 if not os.path.exists(output_folder):
     os.makedirs(output_folder)
 
-# M3U faylını yüklə
+# Siteye istek gönder
 response = requests.get(url)
-if response.status_code == 200:
-    m3u_content = response.text
-else:
-    print(f"Xəta: {response.status_code}")
+if response.status_code != 200:
+    print("Siteye erişilemedi.")
     exit()
 
-# M3U faylını oxu və kanalları ayrı fayllar kimi yaz
-channel_lines = m3u_content.splitlines()
-channel_info = {}
+# HTML içeriğini parse et
+soup = BeautifulSoup(response.content, 'html.parser')
 
-for line in channel_lines:
-    if line.startswith("#EXTINF:"):
-        # Kanal adını çıxar (fayl adı üçün istifadə olunacaq)
-        channel_name = line.split(",")[-1].strip()
-        # Fayl adında qadağan olunan simvolları təmizlə
-        channel_name = channel_name.replace("/", "_").replace("\\", "_").replace(":", "_")
-        channel_info["name"] = channel_name
-    elif line.startswith("http"):
-        # Kanal URL-ni çıxar (heç bir dəyişiklik olmadan)
-        channel_info["url"] = line.strip()
-        
-        # Fayl adını təyin et
-        file_name = f"{channel_info['name']}.m3u8"
-        file_path = os.path.join(output_folder, file_name)
-        
-        # Fayl yarad və yaz
-        try:
-            with open(file_path, "w", encoding="utf-8") as f:
-                # M3U8 başlıqlarını əlavə et
-                f.write("#EXTM3U\n")
-                f.write("#EXT-X-VERSION:3\n")
-                f.write("#EXT-X-TARGETDURATION:10\n")
-                f.write("#EXT-X-MEDIA-SEQUENCE:0\n")
-                # Kanal məlumatını əlavə et (kanal adı olmadan)
-                f.write("#EXTINF:10.0,\n")  # Kanal adı silinib
-                f.write(f"{channel_info['url']}\n")
-            print(f"{channel_info['name']} kanalı fayla yazıldı: {file_path}")
-        except Exception as e:
-            print(f"Xəta: {channel_info['name']} kanalı fayla yazıla bilmədi: {e}")
-else:
-    print("Bütün kanallar uğurla yazıldı.")
+# Yayın linklerini yakala (örnek olarak 'a' tag'leri içindeki linkler)
+links = []
+for a_tag in soup.find_all('a', href=True):
+    href = a_tag['href']
+    if href.endswith('.m3u8'):  # Sadece .m3u8 linklerini al
+        links.append(href)
+
+# Linkleri dosyaya yaz
+with open(output_file, 'w') as f:
+    for link in links:
+        f.write(link + '\n')
+
+print(f"{len(links)} adet yayın linki bulundu ve '{output_file}' dosyasına kaydedildi.")
