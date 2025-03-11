@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 
 # Hedef site URL'si
-url = "https://raw.githubusercontent.com/ipstreet312/freeiptv/refs/heads/master/all.m3u"
+url = "http://65.21.85.175:8000/playlist.m3u8?token=livetv"
 
 # Klasör ve dosya adı
 output_folder = "yayin_linkleri"
