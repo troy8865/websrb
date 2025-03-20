@@ -1,43 +1,56 @@
-import os
 import requests
-from bs4 import BeautifulSoup
+import re
 
-# Hedef site URL'si
-url = "http://php-yayin-paylasim.ct.ws/DTH-Mobil-App.php"
+# Yoda.az saytına daxil olmaq üçün lazım olan məlumatlar
+YODA_URL = "https://yoda.az"
+API_URL = "https://str.yodacdn.net"
+ENDPOINT = "/atv/tracks-v1a1/mono.m3u8"
 
-# Klasör ve dosya adı
-output_folder = "yayin_linkleri"
-output_file = os.path.join(output_folder, "yayin_listesi.m3u8")
+# User-Agent təyin edirik (brauzer kimi görünmək üçün)
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+}
 
-# Klasörü oluştur
-if not os.path.exists(output_folder):
-    os.makedirs(output_folder)
+def get_token():
+    # Yoda.az saytına daxil oluruq
+    response = requests.get(YODA_URL, headers=HEADERS)
+    if response.status_code != 200:
+        raise Exception("Yoda.az saytına daxil olmaq mümkün olmadı.")
 
-# Siteye istek gönder
-response = requests.get(url)
-if response.status_code != 200:
-    print(f"Siteye erişilemedi. Hata kodu: {response.status_code}")
-    exit()
+    # Saytın məzmununda tokeni axtarırıq
+    token_pattern = re.compile(r"token=([a-f0-9-]+)")
+    match = token_pattern.search(response.text)
+    if not match:
+        raise Exception("Token tapılmadı.")
 
-# Eğer yanıt doğrudan bir .m3u8 dosyası ise, dosyaya kaydet
-if url.endswith('.m3u8'):
-    with open(output_file, 'w') as f:
-        f.write(response.text)
-    print(f".m3u8 dosyası '{output_file}' olarak kaydedildi.")
-else:
-    # HTML içeriğini parse et
-    soup = BeautifulSoup(response.content, 'html.parser')
+    token = match.group(1)
+    print(f"Tapılan token: {token}")
+    return token
 
-    # Yayın linklerini yakala (örnek olarak 'a' tag'leri içindeki linkler)
-    links = []
-    for a_tag in soup.find_all('a', href=True):
-        href = a_tag['href']
-        if href.endswith('.m3u8'):  # Sadece .m3u8 linklerini al
-            links.append(href)
+def download_m3u8_file(token, save_path):
+    # Tam .m3u8 URL-ni yaradırıq
+    m3u8_url = f"{API_URL}{ENDPOINT}?token={token}"
+    print(f"Yaradılan .m3u8 URL: {m3u8_url}")
 
-    # Linkleri dosyaya yaz
-    with open(output_file, 'w') as f:
-        for link in links:
-            f.write(link + '\n')
+    # .m3u8 faylını yükləyirik
+    response = requests.get(m3u8_url, headers=HEADERS)
+    if response.status_code != 200:
+        raise Exception("Fayl yüklənə bilmədi.")
 
-    print(f"{len(links)} adet yayın linki bulundu ve '{output_file}' dosyasına kaydedildi.")
+    # Faylı qovluğa yazırıq
+    with open(save_path, "wb") as file:
+        file.write(response.content)
+    print(f"Fayl uğurla yükləndi və {save_path} qovluğuna yazıldı.")
+
+if __name__ == "__main__":
+    # Faylın saxlanacağı yol
+    save_path = "output.m3u8"
+
+    try:
+        # Tokeni əldə edirik
+        token = get_token()
+
+        # .m3u8 faylını yükləyirik
+        download_m3u8_file(token, save_path)
+    except Exception as e:
+        print(f"Xəta baş verdi: {e}")
