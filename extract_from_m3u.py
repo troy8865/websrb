@@ -3,7 +3,7 @@ import requests
 from slugify import slugify
 
 # Qaynaq M3U linki
-m3u_url = "http://pl.ru-tv.site/26da4850/9819fb56/tv.m3u"
+m3u_url = "https://str.yodacdn.net/aztv/tracks-v1a1/mono.m3u8"
 
 # stream qovluğu
 os.makedirs("stream", exist_ok=True)
