@@ -1,11 +1,14 @@
 <?php
-$json = file_get_contents("link.json");
-$data = json_decode($json, true);
+$kanal = $_GET['id'] ?? null;
+if (!$kanal) {
+    die("❌ Kanal ID verilməyib.");
+}
 
-if (isset($data["showtv"])) {
-    $link = $data["showtv"];
-    header("Location: $link");
+$links = json_decode(file_get_contents("linkler.json"), true);
+
+if (isset($links[$kanal])) {
+    header("Location: " . $links[$kanal]);
     exit;
 } else {
-    echo "⚠️ Link tapılmadı.";
+    die("❌ Kanal tapılmadı.");
 }
