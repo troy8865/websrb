@@ -1,1 +1,0 @@
-# STREAM-PHP-2
