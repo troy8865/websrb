@@ -1,5 +1,5 @@
 <?php
-$kanal = $_GET['kanal'] ?? 'kinomiks';
+$kanal = $_GET['kanal'] ?? 'showtv';
 
 function getM3U8Link($kanal) {
     // Məsələn, bu URL-də canlı tokenli m3u8 var
