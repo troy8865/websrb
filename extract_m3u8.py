@@ -4,7 +4,7 @@ import requests
 
 # Canlı yayım URL-ləri siyahısı (məsələn Show TV, digər kanallar)
 source_urls = {
-    "showtv": "https://www.showtv.com.tr/canli-yayin",
+    "now": "https://www.nowtv.com.tr/canli-yayin",
     # Digər kanallar əlavə edə bilərsən
 }
 
