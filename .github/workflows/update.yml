@@ -11,14 +11,18 @@ jobs:
     steps:
       - name: Repo klonla
         uses: actions/checkout@v3
+
       - name: Python qur
         uses: actions/setup-python@v4
         with:
-          python-version: 3.10
+          python-version: '3.10'   # burda 3.10 və ya 3.11 yaz
+
       - name: Asılılıqları quraşdır
         run: pip install yt-dlp
+
       - name: Linki çıxart
         run: python extract_m3u8.py
+
       - name: Yadda saxla
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
