@@ -1,51 +1,41 @@
-import os
-import shutil
-import requests
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+import time
 import re
+import os
 
-source_urls = {
-    "nowtv": "https://www.nowtv.com.tr/canli-yayin",
-}
+# Chrome Headless mode
+options = Options()
+options.add_argument("--headless=new")
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-dev-shm-usage")
+options.add_argument("--user-agent=Mozilla/5.0 (Linux; Android 10) Mobile Safari/537.36")  # Mobil brauzer kimi
 
-stream_folder = "stream"
-if os.path.exists(stream_folder):
-    shutil.rmtree(stream_folder)
-os.makedirs(stream_folder)
+driver = webdriver.Chrome(options=options)
 
-def extract_m3u8(url):
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0 Safari/537.36",
-        "Cache-Control": "no-cache",
-        "Pragma": "no-cache",
-    }
-    r = requests.get(url, headers=headers)
-    r.raise_for_status()
-    text = r.text
+try:
+    driver.get("https://www.nowtv.com.tr/canli-yayin")
+    time.sleep(5)  # JavaScript-in tam yüklənməsi üçün gözlə
 
-    pattern = r'https?://[^\s\'"]+\.m3u8[^\s\'"]*'
-    matches = re.findall(pattern, text)
-    if matches:
-        return matches[0]
+    page_source = driver.page_source
+
+    # Axtarış: yalnız ercdn linkləri (çünki daioncdn deyil!)
+    match = re.search(r'https://nowtv-live-ad\.ercdn\.net/nowtv/nowtv_480p\.m3u8\?[^\'"\\\s]+', page_source)
+    if match:
+        link = match.group(0)
+        print("✅ Tapıldı:", link)
+
+        # Multi-variant formatında stream faylı yaradılır
+        os.makedirs("stream", exist_ok=True)
+        with open("stream/nowtv.m3u8", "w") as f:
+            f.write("#EXTM3U\n")
+            f.write("#EXT-X-VERSION:3\n")
+            f.write("#EXT-X-STREAM-INF:BANDWIDTH=800000,RESOLUTION=854x480\n")
+            f.write(link + "\n")
+        print("✅ Fayl yaradıldı: stream/nowtv.m3u8")
+
     else:
-        return None
+        print("❌ ercdn link tapılmadı.")
 
-def write_multi_variant(file_path, m3u8_url):
-    content = (
-        "#EXTM3U\n"
-        "#EXT-X-VERSION:3\n"
-        "#EXT-X-INDEPENDENT-SEGMENTS\n"
-        "#EXT-X-STREAM-INF:BANDWIDTH=1500000,RESOLUTION=1280x720\n"
-        f"{m3u8_url}\n"
-    )
-    with open(file_path, "w", encoding="utf-8") as f:
-        f.write(content)
-
-if __name__ == "__main__":
-    for name, url in source_urls.items():
-        m3u8 = extract_m3u8(url)
-        if m3u8:
-            print(f"Yeni çıxarılan link ({name}): {m3u8}")
-            filepath = os.path.join(stream_folder, f"{name}.m3u8")
-            write_multi_variant(filepath, m3u8)
-        else:
-            print(f"{name} üçün link tapılmadı.")
+finally:
+    driver.quit()
