@@ -3,7 +3,7 @@ $kanal = $_GET['kanal'] ?? 'kinomiks';
 
 function getM3U8Link($kanal) {
     // Məsələn, bu URL-də canlı tokenli m3u8 var
-    $source_url = "http://site.com/player.php?id=" . urlencode($kanal);
+    $source_url = "https://www.showtv.com.tr/canli-yayin/player.php?id=" . urlencode($kanal);
 
     // Qaynaq HTML-i al
     $html = file_get_contents($source_url);
