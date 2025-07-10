@@ -2,7 +2,7 @@ name: Update m3u8 Links
 
 on:
   schedule:
-    - cron: "1/* * * * *"  # hər 10 dəqiqədə bir işə düşəcək
+    - cron: "*/60 * * * *"  # hər 60 dəqiqədə bir işə düşəcək
   workflow_dispatch:        # İstəyə bağlı əl ilə də işə salmaq olur
 
 jobs:
