@@ -9,7 +9,7 @@ source_urls = {
     "tv4": "https://www.tv4.com.tr/canli-yayin",
     "kanal7": "https://www.kanal7.com/canli-izle",
     "showturk": "https://www.showturk.com.tr/canli-yayin/showturk",
-    "eurostar": "https://www.eurostartv.com.tr/canli-izle",
+    "marneulitv": "http://158.101.222.193:88/georgia_play.php?id=marneulitv",
     "tv8": "https://www.tv8.com.tr/canli-yayin",
     "beyaztv": "https://beyaztv.com.tr/canli-yayin",
     # Digər kanallar əlavə edə bilərsən
