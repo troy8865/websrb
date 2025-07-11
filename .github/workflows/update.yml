@@ -1,47 +1,29 @@
-name: Update NOWTV m3u8
+name: Update m3u8 Link
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "*/10 * * * *"  # hər 10 dəqiqədə bir
+  workflow_dispatch:
 
 jobs:
   update:
     runs-on: ubuntu-latest
-
     steps:
       - name: Repo klonla
         uses: actions/checkout@v3
 
-      - name: Python 3.10 qur
+      - name: Python qur
         uses: actions/setup-python@v4
         with:
-          python-version: "3.10"
+          python-version: '3.10'   # burda 3.10 və ya 3.11 yaz
 
-      - name: Chrome və ChromeDriver quraşdır
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y chromium-driver chromium-browser
-          
-          # Google Chrome yüklə
-          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo dpkg -i google-chrome-stable_current_amd64.deb || sudo apt-get -f install -y
-          
-          # ChromeDriver versiyasını Chrome ilə uyğunlaşdır
-          CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+')
-          wget https://chromedriver.storage.googleapis.com/$CHROME_VERSION/chromedriver_linux64.zip || true
-          unzip chromedriver_linux64.zip || true
-          sudo mv chromedriver /usr/local/bin/
-          sudo chmod +x /usr/local/bin/chromedriver
+      - name: Asılılıqları quraşdır
+        run: pip install yt-dlp
 
-      - name: Python asılılıqları
-        run: |
-          pip install selenium
-
-      - name: extract_m3u8.py işə sal
+      - name: Linki çıxart
         run: python extract_m3u8.py
 
-      - name: Dəyişiklikləri commit et
+      - name: Yadda saxla
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "🔁 NOWTV m3u8 link yeniləndi"
+          commit_message: "🔁 Link yeniləndi"
