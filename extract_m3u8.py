@@ -7,6 +7,7 @@ source_urls = {
     "showtv": "https://www.showtv.com.tr/canli-yayin",
     "nowtv": "https://www.nowtv.com.tr/canli-yayin",
     "nowtv": "https://www.kanal7.com/canli-izle",
+    
     # Digər kanallar əlavə edə bilərsən
 }
 
