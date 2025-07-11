@@ -6,7 +6,7 @@ import requests
 source_urls = {
     "showtv": "https://www.showtv.com.tr/canli-yayin",
     "nowtv": "https://www.nowtv.com.tr/canli-yayin",
-    
+    "tv4": "https://www.tv4.com.tr/canli-yayin",
     # Digər kanallar əlavə edə bilərsən
 }
 
