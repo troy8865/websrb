@@ -8,7 +8,7 @@ source_urls = {
     "nowtv": "https://www.nowtv.com.tr/canli-yayin",
     "tv4": "https://www.tv4.com.tr/canli-yayin",
     "kanal7": "https://www.kanal7.com/canli-izle",
-    "startv": "https://www.startv.com.tr/canli-yayin",
+    "startv": "https://canlitv.com/tv1/startv",
     "eurostar": "https://www.eurostartv.com.tr/canli-izle",
     "tv8": "https://www.tv8.com.tr/canli-yayin",
     "beyaztv": "https://beyaztv.com.tr/canli-yayin",
