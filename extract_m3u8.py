@@ -10,7 +10,7 @@ source_urls = {
     "kanal7": "https://www.kanal7.com/canli-izle",
     "showturk": "https://www.showturk.com.tr/canli-yayin/showturk",
     "marneulitv": "http://158.101.222.193:88/georgia_play.php?id=marneulitv",
-    "russkiy-roman": "https://xittv.net/russkiy-roman.html",
+    "russkiy-roman": "http://live.viks.tv/456-russkiy-roman_v1.html",
     "beyaztv": "https://beyaztv.com.tr/canli-yayin",
     # Digər kanallar əlavə edə bilərsən
 }
