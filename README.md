@@ -2,7 +2,7 @@
 
 # 📢 KANALLARIN HAZIRLANMASI (BY MASTER) 📢
 
-❗ **Bu sistemdəki bütün kanalların hazırlanması və avtomatik işləməsi `MASTER` tərəfindən tərtib edilmişdir.**
+❗ **Bu sistemdəki bütün kanalların hazırlanması və avtomatik işləməsi `BY_MASTER` tərəfindən tərtib edilmişdir.**
 
 🛑 **Oğurlamaq, icazəsiz paylaşmaq, başqa adla təqdim etmək QƏTİ QADAĞANDIR!**
 
