@@ -10,7 +10,7 @@ source_urls = {
     "kanal7": "https://www.kanal7.com/canli-izle",
     "showturk": "https://www.showturk.com.tr/canli-yayin/showturk",
     "marneulitv": "http://158.101.222.193:88/georgia_play.php?id=marneulitv",
-    "atvaz": "https://live.atv.az/",
+    "atvaz": "https://d-iptv.az/web-player#/tv/favorite/allChannel/channel/82/",
     "beyaztv": "https://beyaztv.com.tr/canli-yayin",
     # Digər kanallar əlavə edə bilərsən
 }
