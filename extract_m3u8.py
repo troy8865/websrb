@@ -12,6 +12,7 @@ source_urls = {
     "marneulitv": "http://158.101.222.193:88/georgia_play.php?id=marneulitv",
     "atvaz": "https://live.atv.az/",
     "beyaztv": "https://beyaztv.com.tr/canli-yayin",
+    "https://rutube.ru/live/video/c37cd74192c6bc3d6cd6077c0c4fd686/",
     # Digər kanallar əlavə edə bilərsən
 }
 
