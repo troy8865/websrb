@@ -9,7 +9,6 @@ source_urls = {
     "tv4": "https://www.tv4.com.tr/canli-yayin",
     "kanal7": "https://www.kanal7.com/canli-izle",
     "showturk": "https://www.showturk.com.tr/canli-yayin/showturk",
-    "1": "https://www.tabii.com/tr/watch/live/trt1",
     "tb": "https://www.tabii.com/tr/watch/live/trt1?trackId=150001",
     "beyaztv": "https://beyaztv.com.tr/canli-yayin",
     # Digər kanallar əlavə edə bilərsən
