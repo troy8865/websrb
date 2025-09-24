@@ -11,6 +11,7 @@ source_urls = {
     "showturk": "https://www.showturk.com.tr/canli-yayin/showturk",
      "1": "https://www.tabii.com/tr/watch/live/trt1?trackId=150001",
      "2": "https://www.tabii.com/tr/watch/live/trt1?trackId=150002",
+     "3":https://www.trtspor.com.tr/canli-yayin-izle/trt-spor
      "beyaztv": "https://beyaztv.com.tr/canli-yayin",
     # Digər kanallar əlavə edə bilərsən
 }
