@@ -9,7 +9,7 @@ source_urls = {
     "tv4": "https://www.tv4.com.tr/canli-yayin",
     "kanal7": "https://www.kanal7.com/canli-izle",
     "showturk": "https://www.showturk.com.tr/canli-yayin/showturk",
-    "trt1": "https://www.trt1.com.tr/canli-yayin",
+    "trt1": "https://www.tabii.com/tr/watch/live/trt1?trackId=150002",
     "atvaz": "https://d-iptv.az/web-player#/tv/favorite/allChannel/channel/82/",
     "beyaztv": "https://beyaztv.com.tr/canli-yayin",
     # Digər kanallar əlavə edə bilərsən
