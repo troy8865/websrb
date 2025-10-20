@@ -11,6 +11,12 @@ source_urls = {
     "showturk": "https://www.showturk.com.tr/canli-yayin/showturk",
     "tb": "https://www.tabii.com/tr/watch/live/trt1?trackId=150001",
     "beyaztv": "https://beyaztv.com.tr/canli-yayin",
+    "halktv": "https://halktv.com.tr/canli-yayin",
+    "sozcutv": "ztmY_cCtUl0",
+    "tele1": "elQyWeeDCYU",
+    "tv8": "https://www.tv8.com.tr/canli-yayin",
+    "tv8.5": "https://www.tv8bucuk.com/tv8-5-canli-yayin",
+    "teve2": "https://www.teve2.com.tr/canli-yayin",
     # Digər kanallar əlavə edə bilərsən
 }
 
